@@ -1,0 +1,9 @@
+﻿{
+  "name": "@SlayHot/harness-win32-x64",
+  "version": "2.1.0",
+  "description": "SlayHot Harness 鈥?Windows x64 鍘熺敓浜岃繘鍒?,
+  "license": "MIT",
+  "os": ["win32"],
+  "cpu": ["x64"],
+  "files": ["bin/"]
+}

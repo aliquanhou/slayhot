@@ -1,0 +1,24 @@
+{
+  "total_decisions": 130,
+  "cerebellum_routes": 50,
+  "cerebrum_routes": 80,
+  "cerebellum_successes": 50,
+  "cerebellum_fallbacks": 0,
+  "by_bucket": {
+    "low": {
+      "attempts": 50,
+      "success": 50,
+      "fallback": 0
+    },
+    "medium": {
+      "attempts": 0,
+      "success": 0,
+      "fallback": 0
+    },
+    "high": {
+      "attempts": 0,
+      "success": 0,
+      "fallback": 0
+    }
+  }
+}

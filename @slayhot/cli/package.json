@@ -1,0 +1,26 @@
+﻿{
+  "name": "@SlayHot/cli",
+  "version": "2.1.0",
+  "description": "SlayHot 鈥?鍔ㄦ€佹彁绀鸿瘝椹卞姩鐨勮嚜涓?AI 鏅鸿兘浣?CLI",
+  "license": "MIT",
+  "bin": {
+    "SlayHot": "./bin/SlayHot.js"
+  },
+  "files": [
+    "bin/",
+    "install.js",
+    "README.md"
+  ],
+  "scripts": {
+    "postinstall": "node install.js",
+    "start": "SlayHot"
+  },
+  "optionalDependencies": {
+    "@SlayHot/harness-win32-x64": "1.0.0",
+    "@SlayHot/harness-darwin-arm64": "1.0.0",
+    "@SlayHot/harness-linux-x64": "1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

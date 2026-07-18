@@ -1,0 +1,64 @@
+[
+  {
+    "name": "read_file",
+    "description": "读取文件内容",
+    "keywords": [
+      "read",
+      "open",
+      "show",
+      "display",
+      "cat",
+      "查看",
+      "读取",
+      "打开"
+    ],
+    "exclude_keywords": [],
+    "tool": "read",
+    "params": {
+      "file_path": {
+        "type": "regex",
+        "pattern": "(?:read|open|show|display|cat|查看|读取|打开)\\s+(?:file\\s+|文件\\s+)?['\\\"]?([^\\s'\\\"]+(?:\\.[^\\s'\\\"]+)?)['\\\"]?"
+      }
+    },
+    "response_template": "📄 {file_path}:\n\n{result}",
+    "confidence": 0.82,
+    "usage_count": 1,
+    "success_count": 1,
+    "enabled": true,
+    "created_at": 1784405351.2284274,
+    "last_used": 1784405351.2440453
+  },
+  {
+    "name": "run_command",
+    "description": "执行 Shell 命令",
+    "keywords": [
+      "run",
+      "execute",
+      "bash",
+      "cmd",
+      "command",
+      "shell",
+      "运行",
+      "执行",
+      "命令"
+    ],
+    "exclude_keywords": [],
+    "tool": "bash",
+    "params": {
+      "command": {
+        "type": "rest"
+      },
+      "timeout": {
+        "type": "static",
+        "value": 30
+      }
+    },
+    "response_template": "```\n$ {command}\n{result}\n```",
+    "confidence": 0.75,
+    "usage_count": 1,
+    "success_count": 0,
+    "enabled": true,
+    "created_at": 1784405351.2284274,
+    "last_used": 1784405351.2440453
+  }
+]
