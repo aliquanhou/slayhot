@@ -95,7 +95,9 @@ class ToolRegistry:
                 is_concurrency_safe=is_concurrency_safe,
                 timeout=timeout,
                 require_confirmation=require_confirmation,
-            )(f)
+            )
+            tool._required_fields = required  # pass correct required list
+            tool(f)  # bind function
 
             self._tools[name] = tool
             return f

@@ -97,6 +97,7 @@ class Tool:
         self.require_confirmation = require_confirmation
         self.result_truncate = result_truncate
         self.fn: Callable | None = None
+        self._required_fields: list[str] | None = None  # set by registry
 
     def __call__(self, fn: Callable) -> Tool:
         """装饰器模式绑定函数。"""
@@ -178,4 +179,10 @@ class Tool:
         # 移除 Pydantic 内部字段
         schema.pop("title", None)
         schema.pop("description", None)
+        # Use stored required list (set by registry), not Pydantic's buggy one
+        if self._required_fields is not None:
+            if self._required_fields:
+                schema['required'] = self._required_fields
+            else:
+                schema.pop('required', None)
         return schema
