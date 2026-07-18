@@ -15,7 +15,7 @@ import json
 from dataclasses import dataclass, field
 from typing import Any, Callable
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, create_model
 
 from .schema import Tool, ToolContext, ToolResult
 
@@ -78,13 +78,10 @@ class ToolRegistry:
 
             # 动态创建 Pydantic model
             if fields:
-                input_model = BaseModel.__class__.__new__(
-                    BaseModel.__class__, f"{name.capitalize()}Input",
-                    (BaseModel,),
-                    {"__annotations__": {n: t for n, (t, _) in fields.items()}},
+                input_model = create_model(
+                    f"{name.capitalize()}Input",
+                    **{n: (t, fld) for n, (t, fld) in fields.items()}
                 )
-                for n, (_, fld) in fields.items():
-                    setattr(input_model, n, fld)
             else:
                 input_model = BaseModel
 
@@ -165,7 +162,7 @@ class ToolRegistry:
               "description": "...",
           }
         """
-        from pydantic import BaseModel, Field
+        from pydantic import BaseModel, Field, create_model
 
         # 为宿主工具动态创建输入 Schema，使 LLM 知道如何传参
         exec_path = tool_def.get("exec_path", name)
